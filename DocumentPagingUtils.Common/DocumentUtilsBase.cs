@@ -108,19 +108,40 @@ namespace Common.DocumentPagingUtils
         /// <param name="reverseEven">Indicates whether even pages are reversed</param>
         public virtual void Interlace(string pathFileOdd, string pathFileEven, string pathFileTo, bool reverseEven = false)
         {
+            var is_paths_directories = Directory.Exists(pathFileOdd) && Directory.Exists(pathFileEven);
+
             // Prepare folder
             var path_pages_odd = pathFileOdd + @"_Pages\";
             var path_pages_even = pathFileEven + @"_Pages\";
 
-            // Split to pages
-            var num_of_odd = SplitToPages(pathFileOdd, path_pages_odd);
-            var num_of_even = SplitToPages(pathFileEven, path_pages_even);
+            var num_of_odd = 0;
+            var num_of_even = 0;
+
+            // Split to pages if files were given
+            if (!is_paths_directories)
+            {
+                num_of_odd = SplitToPages(pathFileOdd, path_pages_odd);
+                num_of_even = SplitToPages(pathFileEven, path_pages_even);
+            }
+            else
+            {
+                path_pages_odd = pathFileOdd;
+                path_pages_even = pathFileEven;
+            }
 
             if (File.Exists(pathFileTo))
                 File.Delete(pathFileTo);
 
-            var list_path_odd = Directory.GetFiles(path_pages_odd);
-            var list_path_even = Directory.GetFiles(path_pages_even);
+            var search_pattern = "*" + DefaultExtension;
+
+            var list_path_odd = Directory.GetFiles(path_pages_odd, search_pattern);
+            var list_path_even = Directory.GetFiles(path_pages_even, search_pattern);
+
+            if (is_paths_directories) // Read number of files in dirs
+            {
+                num_of_odd = list_path_odd.Length;
+                num_of_even = list_path_even.Length;
+            }
 
             File.Move(list_path_odd[0], pathFileTo);
 
