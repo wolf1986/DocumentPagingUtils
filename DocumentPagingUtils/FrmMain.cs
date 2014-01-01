@@ -156,20 +156,30 @@ namespace DocumentPagingGui
             {
                 var path_file_orig = edtReverseFile.Text;
 
-                // Make a copy, reverse has an exception in the implementation
-                var path_copy = path_file_orig + "_CopyOf" + Pager.DefaultExtension;
-                File.Copy(path_file_orig, path_copy, false);
-
-                var path_reverse = FilenameGenerateNew(path_file_orig);
-                if (!checkReverseNew.Checked)
+                if (File.Exists(path_file_orig))
                 {
-                    File.Delete(path_file_orig);
-                    path_reverse = path_file_orig;
+                    // Make a copy, reverse has an exception in the implementation
+                    var path_copy = path_file_orig + "_CopyOf" + Pager.DefaultExtension;
+                    File.Copy(path_file_orig, path_copy, false);
+
+                    var path_reverse = FilenameGenerateNew(path_file_orig);
+                    if (!checkReverseNew.Checked)
+                    {
+                        File.Delete(path_file_orig);
+                        path_reverse = path_file_orig;
+                    }
+
+                    Pager.Reverse(path_copy, path_reverse);
+
+                    File.Delete(path_copy);
+                }
+                else
+                {   
+                    // Possibly reverse a directory
+                    Pager.Reverse(path_file_orig, path_file_orig);
                 }
 
-                Pager.Reverse(path_copy, path_reverse);
 
-                File.Delete(path_copy);
             }
             catch (Exception exc)
             {

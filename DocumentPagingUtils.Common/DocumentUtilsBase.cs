@@ -79,6 +79,29 @@ namespace Common.DocumentPagingUtils
         /// <param name="pathFileTo">Path to save output</param>
         public virtual void Reverse(string pathFileFrom, string pathFileTo)
         {
+            var is_paths_directories = Directory.Exists(pathFileFrom) && Directory.Exists(pathFileTo);
+
+            // If given directories instead of files, only rename files
+            if (is_paths_directories) 
+            {
+                var paths = Directory.GetFiles(pathFileFrom);
+
+                // Assume order by filename
+                var counter = paths.Length;
+                foreach (var path_file in paths)
+                {
+                    // Append zero padded index to the old filename
+                    var old_filename = counter.ToString("D3") + "_" + Path.GetFileName(path_file);
+                    
+                    var path_new = Path.Combine(pathFileTo, old_filename);
+
+                    File.Move(path_file, path_new);
+                    counter--;
+                }
+
+                return;
+            }
+
             // Prepare folder
             var path_pages = pathFileFrom + @"_Pages\";
             Directory.CreateDirectory(path_pages);
@@ -143,7 +166,7 @@ namespace Common.DocumentPagingUtils
                 num_of_even = list_path_even.Length;
             }
 
-            File.Move(list_path_odd[0], pathFileTo);
+            File.Copy(list_path_odd[0], pathFileTo);
 
             var index_cur_odd = 1;
             var index_cur_even = 0;
@@ -170,8 +193,11 @@ namespace Common.DocumentPagingUtils
             }
 
             // Cleanup
-            Directory.Delete(path_pages_even, true);
-            Directory.Delete(path_pages_odd, true);
+            if (!is_paths_directories)
+            {
+                Directory.Delete(path_pages_even, true);
+                Directory.Delete(path_pages_odd, true);
+            }
         }
 
         /// <summary>
