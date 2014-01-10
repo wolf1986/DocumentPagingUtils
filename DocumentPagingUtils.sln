@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentPagingUtils.Common", "DocumentPagingUtils.Common\DocumentPagingUtils.Common.csproj", "{EB7B5B6F-9791-4EE2-9A08-414BDCEE0D2C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils.PdfIac", "Utils.PdfIac\Utils.PdfIac.csproj", "{B1FB8845-A8EB-4CD0-8C07-C41C4113803C}"
@@ -10,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils.Djvu", "Utils.Djvu\Utils.Djvu.csproj", "{1A228C1A-A15A-427E-A266-F690C8826427}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentPagingUtils", "DocumentPagingUtils\DocumentPagingUtils.csproj", "{A811AFB1-4B89-4621-B0F5-D9C561549A87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageHelper", "ImageHelper\ImageHelper.csproj", "{EDCB4A50-B1B5-48F4-84DA-4B37F9EE2F59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +77,16 @@ Global
 		{A811AFB1-4B89-4621-B0F5-D9C561549A87}.Release|Mixed Platforms.Build.0 = Release|x86
 		{A811AFB1-4B89-4621-B0F5-D9C561549A87}.Release|x86.ActiveCfg = Release|x86
 		{A811AFB1-4B89-4621-B0F5-D9C561549A87}.Release|x86.Build.0 = Release|x86
+		{EDCB4A50-B1B5-48F4-84DA-4B37F9EE2F59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDCB4A50-B1B5-48F4-84DA-4B37F9EE2F59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDCB4A50-B1B5-48F4-84DA-4B37F9EE2F59}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EDCB4A50-B1B5-48F4-84DA-4B37F9EE2F59}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EDCB4A50-B1B5-48F4-84DA-4B37F9EE2F59}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EDCB4A50-B1B5-48F4-84DA-4B37F9EE2F59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDCB4A50-B1B5-48F4-84DA-4B37F9EE2F59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDCB4A50-B1B5-48F4-84DA-4B37F9EE2F59}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{EDCB4A50-B1B5-48F4-84DA-4B37F9EE2F59}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{EDCB4A50-B1B5-48F4-84DA-4B37F9EE2F59}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

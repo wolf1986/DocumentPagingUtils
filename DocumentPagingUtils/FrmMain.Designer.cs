@@ -72,11 +72,6 @@ namespace DocumentPagingGui
         private TextBox edtInterleaveOutFile;
         private TextBox edtInsertAtIndex;
         private TabPage tab7_General;
-        private Label label21;
-        private Button btnGeneralRename;
-        private Label label22;
-        private Button btnGeneralRenameBrowse;
-        private TextBox edtGeneralRenameDirectory;
         private CheckBox checkReverseNew;
         private OpenFileDialog openFileDialog;
         private SaveFileDialog saveFileDialog;
@@ -171,15 +166,27 @@ namespace DocumentPagingGui
             this.edtInterleaveOdd = new System.Windows.Forms.TextBox();
             this.edtInterleaveEven = new System.Windows.Forms.TextBox();
             this.tab7_General = new System.Windows.Forms.TabPage();
-            this.label21 = new System.Windows.Forms.Label();
-            this.btnGeneralRename = new System.Windows.Forms.Button();
-            this.label22 = new System.Windows.Forms.Label();
-            this.btnGeneralRenameBrowse = new System.Windows.Forms.Button();
-            this.edtGeneralRenameDirectory = new System.Windows.Forms.TextBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.label23 = new System.Windows.Forms.Label();
             this.cmbDocType = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnGeneralRename = new System.Windows.Forms.Button();
+            this.btnGeneralRenameBrowse = new System.Windows.Forms.Button();
+            this.edtGeneralRenameDirectory = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnGeneralAdjust = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.btnGeneralAdjustBrowse = new System.Windows.Forms.Button();
+            this.edtGeneralAdjustPath = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.edtGeneralAdjustBrightness = new System.Windows.Forms.TextBox();
+            this.edtGeneralAdjustContrast = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.edtGeneralAdjustGamma = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.chkGeneralAdjustOverride = new System.Windows.Forms.CheckBox();
             this.mainTabs.SuspendLayout();
             this.tab0_About.SuspendLayout();
             this.tab1_Merge.SuspendLayout();
@@ -189,6 +196,8 @@ namespace DocumentPagingGui
             this.tab5_Reverse.SuspendLayout();
             this.tab6_Interleave.SuspendLayout();
             this.tab7_General.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTabs
@@ -956,11 +965,8 @@ namespace DocumentPagingGui
             // 
             // tab7_General
             // 
-            this.tab7_General.Controls.Add(this.label21);
-            this.tab7_General.Controls.Add(this.btnGeneralRename);
-            this.tab7_General.Controls.Add(this.label22);
-            this.tab7_General.Controls.Add(this.btnGeneralRenameBrowse);
-            this.tab7_General.Controls.Add(this.edtGeneralRenameDirectory);
+            this.tab7_General.Controls.Add(this.groupBox2);
+            this.tab7_General.Controls.Add(this.groupBox1);
             this.tab7_General.Location = new System.Drawing.Point(4, 25);
             this.tab7_General.Name = "tab7_General";
             this.tab7_General.Padding = new System.Windows.Forms.Padding(3);
@@ -968,60 +974,6 @@ namespace DocumentPagingGui
             this.tab7_General.TabIndex = 7;
             this.tab7_General.Text = "General";
             this.tab7_General.UseVisualStyleBackColor = true;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(10, 7);
-            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(299, 16);
-            this.label21.TabIndex = 19;
-            this.label21.Text = "Rename all files in directory to their modified date";
-            // 
-            // btnGeneralRename
-            // 
-            this.btnGeneralRename.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnGeneralRename.Location = new System.Drawing.Point(472, 27);
-            this.btnGeneralRename.Margin = new System.Windows.Forms.Padding(4);
-            this.btnGeneralRename.Name = "btnGeneralRename";
-            this.btnGeneralRename.Size = new System.Drawing.Size(78, 27);
-            this.btnGeneralRename.TabIndex = 17;
-            this.btnGeneralRename.Text = "Rename !";
-            this.btnGeneralRename.UseVisualStyleBackColor = true;
-            this.btnGeneralRename.Click += new System.EventHandler(this.btnGeneralRename_Click);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(10, 34);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(59, 16);
-            this.label22.TabIndex = 18;
-            this.label22.Text = "Input Dir:";
-            // 
-            // btnGeneralRenameBrowse
-            // 
-            this.btnGeneralRenameBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGeneralRenameBrowse.Location = new System.Drawing.Point(383, 27);
-            this.btnGeneralRenameBrowse.Margin = new System.Windows.Forms.Padding(4);
-            this.btnGeneralRenameBrowse.Name = "btnGeneralRenameBrowse";
-            this.btnGeneralRenameBrowse.Size = new System.Drawing.Size(81, 27);
-            this.btnGeneralRenameBrowse.TabIndex = 16;
-            this.btnGeneralRenameBrowse.Text = "Browse...";
-            this.btnGeneralRenameBrowse.UseVisualStyleBackColor = true;
-            this.btnGeneralRenameBrowse.Click += new System.EventHandler(this.btnGeneralRenameBrowse_Click);
-            // 
-            // edtGeneralRenameDirectory
-            // 
-            this.edtGeneralRenameDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.edtGeneralRenameDirectory.Location = new System.Drawing.Point(88, 30);
-            this.edtGeneralRenameDirectory.Margin = new System.Windows.Forms.Padding(4);
-            this.edtGeneralRenameDirectory.Name = "edtGeneralRenameDirectory";
-            this.edtGeneralRenameDirectory.Size = new System.Drawing.Size(287, 22);
-            this.edtGeneralRenameDirectory.TabIndex = 15;
             // 
             // label23
             // 
@@ -1041,6 +993,204 @@ namespace DocumentPagingGui
             this.cmbDocType.Size = new System.Drawing.Size(399, 24);
             this.cmbDocType.TabIndex = 2;
             this.cmbDocType.SelectedIndexChanged += new System.EventHandler(this.cmbDocType_SelectedIndexChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label22);
+            this.groupBox1.Controls.Add(this.btnGeneralRename);
+            this.groupBox1.Controls.Add(this.btnGeneralRenameBrowse);
+            this.groupBox1.Controls.Add(this.edtGeneralRenameDirectory);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(549, 63);
+            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Rename all files in directory to their modified date (*.*)";
+            // 
+            // btnGeneralRename
+            // 
+            this.btnGeneralRename.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGeneralRename.Location = new System.Drawing.Point(464, 22);
+            this.btnGeneralRename.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGeneralRename.Name = "btnGeneralRename";
+            this.btnGeneralRename.Size = new System.Drawing.Size(78, 27);
+            this.btnGeneralRename.TabIndex = 21;
+            this.btnGeneralRename.Text = "Rename !";
+            this.btnGeneralRename.UseVisualStyleBackColor = true;
+            this.btnGeneralRename.Click += new System.EventHandler(this.btnGeneralRename_Click);
+            // 
+            // btnGeneralRenameBrowse
+            // 
+            this.btnGeneralRenameBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGeneralRenameBrowse.Location = new System.Drawing.Point(376, 22);
+            this.btnGeneralRenameBrowse.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGeneralRenameBrowse.Name = "btnGeneralRenameBrowse";
+            this.btnGeneralRenameBrowse.Size = new System.Drawing.Size(80, 27);
+            this.btnGeneralRenameBrowse.TabIndex = 20;
+            this.btnGeneralRenameBrowse.Text = "Browse...";
+            this.btnGeneralRenameBrowse.UseVisualStyleBackColor = true;
+            this.btnGeneralRenameBrowse.Click += new System.EventHandler(this.btnGeneralRenameBrowse_Click);
+            // 
+            // edtGeneralRenameDirectory
+            // 
+            this.edtGeneralRenameDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.edtGeneralRenameDirectory.Location = new System.Drawing.Point(106, 25);
+            this.edtGeneralRenameDirectory.Margin = new System.Windows.Forms.Padding(4);
+            this.edtGeneralRenameDirectory.Name = "edtGeneralRenameDirectory";
+            this.edtGeneralRenameDirectory.Size = new System.Drawing.Size(262, 22);
+            this.edtGeneralRenameDirectory.TabIndex = 19;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.chkGeneralAdjustOverride);
+            this.groupBox2.Controls.Add(this.btnGeneralAdjust);
+            this.groupBox2.Controls.Add(this.label26);
+            this.groupBox2.Controls.Add(this.label25);
+            this.groupBox2.Controls.Add(this.label24);
+            this.groupBox2.Controls.Add(this.label21);
+            this.groupBox2.Controls.Add(this.edtGeneralAdjustGamma);
+            this.groupBox2.Controls.Add(this.btnGeneralAdjustBrowse);
+            this.groupBox2.Controls.Add(this.edtGeneralAdjustContrast);
+            this.groupBox2.Controls.Add(this.edtGeneralAdjustBrightness);
+            this.groupBox2.Controls.Add(this.edtGeneralAdjustPath);
+            this.groupBox2.Location = new System.Drawing.Point(6, 75);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(549, 85);
+            this.groupBox2.TabIndex = 21;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Adjust colors of an image file (Jpg, Png, Tiff, etc...)";
+            // 
+            // btnGeneralAdjust
+            // 
+            this.btnGeneralAdjust.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGeneralAdjust.Location = new System.Drawing.Point(464, 22);
+            this.btnGeneralAdjust.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGeneralAdjust.Name = "btnGeneralAdjust";
+            this.btnGeneralAdjust.Size = new System.Drawing.Size(78, 27);
+            this.btnGeneralAdjust.TabIndex = 25;
+            this.btnGeneralAdjust.Text = "Adjust !";
+            this.btnGeneralAdjust.UseVisualStyleBackColor = true;
+            this.btnGeneralAdjust.Click += new System.EventHandler(this.btnGeneralAdjust_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(7, 27);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(91, 16);
+            this.label21.TabIndex = 26;
+            this.label21.Text = "Input File / Dir:";
+            // 
+            // btnGeneralAdjustBrowse
+            // 
+            this.btnGeneralAdjustBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGeneralAdjustBrowse.Location = new System.Drawing.Point(376, 22);
+            this.btnGeneralAdjustBrowse.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGeneralAdjustBrowse.Name = "btnGeneralAdjustBrowse";
+            this.btnGeneralAdjustBrowse.Size = new System.Drawing.Size(81, 27);
+            this.btnGeneralAdjustBrowse.TabIndex = 24;
+            this.btnGeneralAdjustBrowse.Text = "Browse...";
+            this.btnGeneralAdjustBrowse.UseVisualStyleBackColor = true;
+            this.btnGeneralAdjustBrowse.Click += new System.EventHandler(this.btnGeneralAdjustBrowse_Click);
+            // 
+            // edtGeneralAdjustPath
+            // 
+            this.edtGeneralAdjustPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.edtGeneralAdjustPath.Location = new System.Drawing.Point(106, 25);
+            this.edtGeneralAdjustPath.Margin = new System.Windows.Forms.Padding(4);
+            this.edtGeneralAdjustPath.Name = "edtGeneralAdjustPath";
+            this.edtGeneralAdjustPath.Size = new System.Drawing.Size(262, 22);
+            this.edtGeneralAdjustPath.TabIndex = 23;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(7, 27);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(91, 16);
+            this.label22.TabIndex = 27;
+            this.label22.Text = "Input File / Dir:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(7, 56);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(74, 16);
+            this.label24.TabIndex = 26;
+            this.label24.Text = "Brightness:";
+            // 
+            // edtGeneralAdjustBrightness
+            // 
+            this.edtGeneralAdjustBrightness.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.edtGeneralAdjustBrightness.Location = new System.Drawing.Point(89, 53);
+            this.edtGeneralAdjustBrightness.Margin = new System.Windows.Forms.Padding(4);
+            this.edtGeneralAdjustBrightness.Name = "edtGeneralAdjustBrightness";
+            this.edtGeneralAdjustBrightness.Size = new System.Drawing.Size(42, 22);
+            this.edtGeneralAdjustBrightness.TabIndex = 23;
+            this.edtGeneralAdjustBrightness.Text = "1.0";
+            this.edtGeneralAdjustBrightness.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // edtGeneralAdjustContrast
+            // 
+            this.edtGeneralAdjustContrast.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.edtGeneralAdjustContrast.Location = new System.Drawing.Point(204, 53);
+            this.edtGeneralAdjustContrast.Margin = new System.Windows.Forms.Padding(4);
+            this.edtGeneralAdjustContrast.Name = "edtGeneralAdjustContrast";
+            this.edtGeneralAdjustContrast.Size = new System.Drawing.Size(42, 22);
+            this.edtGeneralAdjustContrast.TabIndex = 23;
+            this.edtGeneralAdjustContrast.Text = "1.0";
+            this.edtGeneralAdjustContrast.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(139, 56);
+            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(60, 16);
+            this.label25.TabIndex = 26;
+            this.label25.Text = "Contrast:";
+            // 
+            // edtGeneralAdjustGamma
+            // 
+            this.edtGeneralAdjustGamma.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.edtGeneralAdjustGamma.Location = new System.Drawing.Point(319, 53);
+            this.edtGeneralAdjustGamma.Margin = new System.Windows.Forms.Padding(4);
+            this.edtGeneralAdjustGamma.Name = "edtGeneralAdjustGamma";
+            this.edtGeneralAdjustGamma.Size = new System.Drawing.Size(42, 22);
+            this.edtGeneralAdjustGamma.TabIndex = 23;
+            this.edtGeneralAdjustGamma.Text = "1.0";
+            this.edtGeneralAdjustGamma.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(254, 56);
+            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(59, 16);
+            this.label26.TabIndex = 26;
+            this.label26.Text = "Gamma:";
+            // 
+            // chkGeneralAdjustOverride
+            // 
+            this.chkGeneralAdjustOverride.AutoSize = true;
+            this.chkGeneralAdjustOverride.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkGeneralAdjustOverride.Location = new System.Drawing.Point(368, 55);
+            this.chkGeneralAdjustOverride.Name = "chkGeneralAdjustOverride";
+            this.chkGeneralAdjustOverride.Size = new System.Drawing.Size(167, 20);
+            this.chkGeneralAdjustOverride.TabIndex = 27;
+            this.chkGeneralAdjustOverride.Text = "Override Original Files?";
+            this.chkGeneralAdjustOverride.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
@@ -1072,7 +1222,10 @@ namespace DocumentPagingGui
             this.tab6_Interleave.ResumeLayout(false);
             this.tab6_Interleave.PerformLayout();
             this.tab7_General.ResumeLayout(false);
-            this.tab7_General.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1082,5 +1235,22 @@ namespace DocumentPagingGui
 
         private Label label23;
         private ComboBox cmbDocType;
+        private GroupBox groupBox2;
+        private Button btnGeneralAdjust;
+        private Label label21;
+        private Button btnGeneralAdjustBrowse;
+        private TextBox edtGeneralAdjustPath;
+        private GroupBox groupBox1;
+        private Button btnGeneralRename;
+        private Button btnGeneralRenameBrowse;
+        private TextBox edtGeneralRenameDirectory;
+        private Label label22;
+        private Label label26;
+        private Label label25;
+        private Label label24;
+        private TextBox edtGeneralAdjustGamma;
+        private TextBox edtGeneralAdjustContrast;
+        private TextBox edtGeneralAdjustBrightness;
+        private CheckBox chkGeneralAdjustOverride;
     }
 }

@@ -100,6 +100,10 @@
       <Project>{EB7B5B6F-9791-4EE2-9A08-414BDCEE0D2C}</Project>
       <Name>DocumentPagingUtils.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ImageHelper\ImageHelper.csproj">
+      <Project>{edcb4a50-b1b5-48f4-84da-4b37f9ee2f59}</Project>
+      <Name>ImageHelper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

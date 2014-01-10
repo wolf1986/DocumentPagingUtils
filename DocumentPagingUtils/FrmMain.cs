@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using Common.DocumentPagingUtils;
+using DocumentPagingUtils;
 
 namespace DocumentPagingGui
 {
@@ -62,7 +63,7 @@ namespace DocumentPagingGui
                 index_dup++;
                 path_copy = Path.Combine(
                     Path.GetDirectoryName(pathPreviousName) ?? ".",
-                    Path.GetFileNameWithoutExtension(pathPreviousName) + "_New_" + index_dup + Pager.DefaultExtension);
+                    Path.GetFileNameWithoutExtension(pathPreviousName) + "_New_" + index_dup + Path.GetExtension(pathPreviousName));
             } while (File.Exists(path_copy));
 
             return path_copy;
@@ -208,10 +209,18 @@ namespace DocumentPagingGui
             try
             {
                 const string pattern_date = "yyyy.MM.dd - HH.mm.ss";
+                string[] l_path_files;
 
-                string[] l_path_files = Directory.GetFiles(
-                    edtGeneralRenameDirectory.Text,
-                    "*.*", SearchOption.TopDirectoryOnly);
+                if(File.Exists(edtGeneralRenameDirectory.Text))
+                    l_path_files = new [] {edtGeneralRenameDirectory.Text};
+                else
+                    l_path_files = Directory.GetFiles(
+                        edtGeneralRenameDirectory.Text,
+                        "*.*", 
+                        SearchOption.TopDirectoryOnly
+                    );
+
+                var errors = new List<string>();
 
                 foreach (var path_file in l_path_files)
                 {
@@ -235,10 +244,14 @@ namespace DocumentPagingGui
 
                         File.Move(path_file, path_file_new);
                     }
-                    catch
+                    catch(Exception ex)
                     {
-                    } // Ignore Errors
+                        errors.Add("(" + Path.GetFileName(path_file) + "): " + ex.Message);
+                    }
                 }
+
+                if (errors.Count() > 0)
+                    MessageBox.Show(String.Join("\n", errors.ToArray()), "Errors:");
             }
             catch (Exception exc)
             {
@@ -338,6 +351,74 @@ namespace DocumentPagingGui
         private void cmbDocType_SelectedIndexChanged(object sender, EventArgs e)
         {
             Pager = (DocumentUtilsBase)cmbDocType.SelectedItem;
+        }
+
+        private void btnGeneralAdjustBrowse_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                edtGeneralRenameDirectory.Text = folderBrowserDialog.SelectedPath;
+        }
+
+        private void btnGeneralAdjust_Click(object sender, EventArgs e)
+        {
+            // Consts
+            string[] l_ext_to_skip = {".db"};
+
+            // Get values
+            float brightness = float.Parse(edtGeneralAdjustBrightness.Text);
+            float contrast = float.Parse(edtGeneralAdjustContrast.Text);
+            float gamma = float.Parse(edtGeneralAdjustGamma.Text);
+            
+            string[] l_path_files;
+
+            // Apply Adjustment
+                if(File.Exists(edtGeneralAdjustPath.Text))
+                    l_path_files = new [] {edtGeneralAdjustPath.Text};
+                else
+                    l_path_files = Directory.GetFiles(
+                        edtGeneralAdjustPath.Text,
+                        "*.*", 
+                        SearchOption.TopDirectoryOnly
+                    );
+
+            var errors = new List<string>();
+
+                foreach (var path_file in l_path_files)
+                {
+                    try
+                    {
+                        if (l_ext_to_skip.Contains(Path.GetExtension(path_file).ToLower()))
+                            continue;
+
+                        AdjustColorsFile(path_file, brightness, contrast, gamma, chkGeneralAdjustOverride.Checked);
+                    }
+                    catch (Exception ex)
+                    {
+                        errors.Add("(" + Path.GetFileName(path_file) + "): " + ex.Message);
+                    }
+                }
+
+                if (errors.Count() > 0)
+                    MessageBox.Show(String.Join("\n", errors.ToArray()), "Errors:");
+
+        }
+
+        private void AdjustColorsFile(string pathInput, float brightness, float contrast, float gamma, bool isOverride)
+        {
+            // Consts
+            var PREFIX = "out_";
+
+            string path_output;
+
+            if (isOverride)
+                path_output = pathInput;
+            else
+                path_output = Path.Combine(Path.GetDirectoryName(pathInput), PREFIX + Path.GetFileName(pathInput));
+
+            if (File.Exists(path_output))
+                path_output = FilenameGenerateNew(path_output);
+
+            ImageHelper.AdjustColors(pathInput, path_output, brightness, contrast, gamma);
         }
     }
 }
