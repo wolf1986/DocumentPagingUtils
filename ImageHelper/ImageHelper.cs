@@ -42,11 +42,20 @@ namespace DocumentPagingUtils
 
         public static void AdjustColors(string pathIn, string pathOut, float brightness, float contrast, float gamma)
         {
-            using (var orig = Image.FromFile(pathIn))
+            Bitmap output = null;
+            try 
             {
-                using (var output = AdjustColors(orig, brightness, contrast, gamma))
+                using (var orig = Image.FromFile(pathIn))
                 {
-                    output.Save(pathOut, orig.RawFormat);
+                    output = AdjustColors(orig, brightness, contrast, gamma);
+                }
+            }
+            finally
+            {
+                if (null != output)
+                {
+                    output.Save(pathOut);
+                    output.Dispose();
                 }
             }
         }

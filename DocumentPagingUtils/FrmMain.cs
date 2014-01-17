@@ -411,12 +411,16 @@ namespace DocumentPagingGui
             string path_output;
 
             if (isOverride)
+            {
                 path_output = pathInput;
+            }
             else
+            {
                 path_output = Path.Combine(Path.GetDirectoryName(pathInput), PREFIX + Path.GetFileName(pathInput));
 
-            if (File.Exists(path_output))
-                path_output = FilenameGenerateNew(path_output);
+                if (File.Exists(path_output))
+                    path_output = FilenameGenerateNew(path_output);
+            }
 
             ImageHelper.AdjustColors(pathInput, path_output, brightness, contrast, gamma);
         }
