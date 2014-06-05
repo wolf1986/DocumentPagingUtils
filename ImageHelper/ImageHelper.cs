@@ -40,7 +40,7 @@ namespace DocumentPagingUtils
             return adjustedImage;
         }
 
-        public static void AdjustColors(string pathIn, string pathOut, float brightness, float contrast, float gamma)
+        public static void AdjustColors(string pathIn, string pathOut, float brightness, float contrast, float gamma, ImageFormat imf = null)
         {
             Bitmap output = null;
             try 
@@ -54,7 +54,11 @@ namespace DocumentPagingUtils
             {
                 if (null != output)
                 {
-                    output.Save(pathOut);
+                    // Default to PNG
+                    if (imf == null)
+                        imf = ImageFormat.Png;
+
+                    output.Save(pathOut, imf);
                     output.Dispose();
                 }
             }

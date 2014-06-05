@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -372,14 +371,14 @@ namespace DocumentPagingGui
             string[] l_path_files;
 
             // Apply Adjustment
-                if(File.Exists(edtGeneralAdjustPath.Text))
-                    l_path_files = new [] {edtGeneralAdjustPath.Text};
-                else
-                    l_path_files = Directory.GetFiles(
-                        edtGeneralAdjustPath.Text,
-                        "*.*", 
-                        SearchOption.TopDirectoryOnly
-                    );
+            if(File.Exists(edtGeneralAdjustPath.Text))
+                l_path_files = new [] {edtGeneralAdjustPath.Text};
+            else
+                l_path_files = Directory.GetFiles(
+                    edtGeneralAdjustPath.Text,
+                    "*.*", 
+                    SearchOption.AllDirectories
+                );
 
             var errors = new List<string>();
 
@@ -408,21 +407,43 @@ namespace DocumentPagingGui
             // Consts
             var PREFIX = "out_";
 
+            // Replace extension to png if needed
+            Func<string, string> replacePng = filePath =>
+                {
+                    var cur_extension = Path.GetExtension(filePath).ToLower();
+                    var cur_without_ext =
+                        Path.Combine(
+                            Path.GetDirectoryName(filePath),
+                            Path.GetFileNameWithoutExtension(filePath)
+                        );
+
+                    if (!cur_extension.Equals(".png"))
+                        filePath = cur_without_ext + ".png";
+
+                    return filePath;
+                };
+
             string path_output;
 
             if (isOverride)
             {
-                path_output = pathInput;
+                path_output = replacePng(pathInput);
             }
             else
             {
                 path_output = Path.Combine(Path.GetDirectoryName(pathInput), PREFIX + Path.GetFileName(pathInput));
+                path_output = replacePng(path_output);
 
                 if (File.Exists(path_output))
                     path_output = FilenameGenerateNew(path_output);
             }
 
             ImageHelper.AdjustColors(pathInput, path_output, brightness, contrast, gamma);
+
+            if (!pathInput.Equals(path_output, StringComparison.InvariantCultureIgnoreCase) && isOverride)
+            {
+                File.Delete(pathInput);
+            }
         }
     }
 }
