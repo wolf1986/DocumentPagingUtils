@@ -228,8 +228,11 @@ namespace DocumentPagingGui
                                         Path.GetExtension(path_file);
 
                     // Skip files that already have the correct names
-                    if (Path.GetFileName(path_file_new) == Path.GetFileName(path_file))
+                    if (Path.GetFileName(path_file_new).Equals(Path.GetFileName(path_file)))
                         continue;
+
+                    var is_rename_not_required = false;
+
                     try
                     {
                         var index_duplicate = 0;
@@ -239,7 +242,16 @@ namespace DocumentPagingGui
                             path_file_new = Path.Combine(
                                 Path.GetDirectoryName(path_file) ?? ".",
                                 filename_new + "_" + index_duplicate + Path.GetExtension(path_file));
+
+                            if (Path.GetFileName(path_file_new).Equals(Path.GetFileName((path_file))))
+                            {
+                                is_rename_not_required = true;
+                                break;
+                            }
                         }
+
+                        if (is_rename_not_required)
+                            continue;
 
                         File.Move(path_file, path_file_new);
                     }
