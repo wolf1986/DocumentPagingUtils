@@ -35,7 +35,7 @@ namespace Common.DocumentPagingUtils
         /// <summary>
         /// Deletes a signle page from the document
         /// </summary>
-        /// <param name="page">Zero-based index of page</param>
+        /// <param name="page">One-based index of page</param>
         public abstract void DeletePage(string pathFile, int page);
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Common.DocumentPagingUtils
         /// </summary>
         /// <param name="pathFileTo">Path to main document</param>
         /// <param name="pathFileFrom">Path to document to be inserted</param>
-        /// <param name="index">Page before to insert; -1 means document should be appended to the end</param>
+        /// <param name="index">Page before to insert (one-based); -1 means document should be appended to the end</param>
         public abstract void Insert(string pathFileTo, string pathFileFrom, int index);
 
         /// <summary>

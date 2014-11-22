@@ -18,7 +18,6 @@ namespace DocumentPagingUtils
 
         public override void BindDir(string fileNameTo, string pathDir, string searchPattern)
         {
-            // Creation using Djvu-Libre seems to be buggy. Use append method instead
             var l_files = Directory.GetFiles(pathDir, searchPattern);
             Create(fileNameTo, l_files);
 

@@ -5,15 +5,26 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentPagingUtils.Common", "DocumentPagingUtils.Common\DocumentPagingUtils.Common.csproj", "{EB7B5B6F-9791-4EE2-9A08-414BDCEE0D2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils.PdfIac", "Utils.PdfIac\Utils.PdfIac.csproj", "{B1FB8845-A8EB-4CD0-8C07-C41C4113803C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils.Pdf.Iac", "Utils.Pdf.Iac\Utils.Pdf.Iac.csproj", "{B1FB8845-A8EB-4CD0-8C07-C41C4113803C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils.Tiff", "Utils.Tiff\Utils.Tiff.csproj", "{F8DB46C2-B340-4F0B-B1F2-E698C3BBB01C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils.Djvu", "Utils.Djvu\Utils.Djvu.csproj", "{1A228C1A-A15A-427E-A266-F690C8826427}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentPagingUtils", "DocumentPagingUtils\DocumentPagingUtils.csproj", "{A811AFB1-4B89-4621-B0F5-D9C561549A87}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1A228C1A-A15A-427E-A266-F690C8826427} = {1A228C1A-A15A-427E-A266-F690C8826427}
+		{2D81CB3F-9ACC-4659-A58C-226592BFAAA5} = {2D81CB3F-9ACC-4659-A58C-226592BFAAA5}
+		{B1FB8845-A8EB-4CD0-8C07-C41C4113803C} = {B1FB8845-A8EB-4CD0-8C07-C41C4113803C}
+		{F8DB46C2-B340-4F0B-B1F2-E698C3BBB01C} = {F8DB46C2-B340-4F0B-B1F2-E698C3BBB01C}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageHelper", "ImageHelper\ImageHelper.csproj", "{EDCB4A50-B1B5-48F4-84DA-4B37F9EE2F59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils.Pdf.iTextSharp", "Utils.Pdf.iTextSharp\Utils.Pdf.iTextSharp.csproj", "{2D81CB3F-9ACC-4659-A58C-226592BFAAA5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EB7B5B6F-9791-4EE2-9A08-414BDCEE0D2C} = {EB7B5B6F-9791-4EE2-9A08-414BDCEE0D2C}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +98,16 @@ Global
 		{EDCB4A50-B1B5-48F4-84DA-4B37F9EE2F59}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{EDCB4A50-B1B5-48F4-84DA-4B37F9EE2F59}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{EDCB4A50-B1B5-48F4-84DA-4B37F9EE2F59}.Release|x86.ActiveCfg = Release|Any CPU
+		{2D81CB3F-9ACC-4659-A58C-226592BFAAA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D81CB3F-9ACC-4659-A58C-226592BFAAA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D81CB3F-9ACC-4659-A58C-226592BFAAA5}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2D81CB3F-9ACC-4659-A58C-226592BFAAA5}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2D81CB3F-9ACC-4659-A58C-226592BFAAA5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2D81CB3F-9ACC-4659-A58C-226592BFAAA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D81CB3F-9ACC-4659-A58C-226592BFAAA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D81CB3F-9ACC-4659-A58C-226592BFAAA5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2D81CB3F-9ACC-4659-A58C-226592BFAAA5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2D81CB3F-9ACC-4659-A58C-226592BFAAA5}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
