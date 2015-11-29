@@ -28,3 +28,5 @@ A Set of libraries in C# and a simple GUI to manipulate multi-page documents suc
     Using the Adobe Acrobat Interapplication Communication (Adobe Acrobat IAC) <br />
     (Yes, this means that **Adobe Acrobat** must be installed. This library only automates it for easy access)
     Please note that this will not work with _**Adobe Acrobat Reader**_
+
+    Also, using iTextSharp library - this allows anyone to manipulate PDF files regardless of having Adobe Acrobat installed!
