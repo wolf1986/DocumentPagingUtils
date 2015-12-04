@@ -1,11 +1,8 @@
 # DocumentPagingUtils #
-===================
-
 A Set of libraries in C# and a simple GUI to manipulate multi-page documents such as tiff, pdf, djvu
 
 
 ## Supported Page Operations ##
-===================
 1. **Merge** all files in directory.
 1. **Split** a file to a directory, each page gets it's own file.
 1. **Insert** a file to another (at a given page-number).
@@ -15,7 +12,6 @@ A Set of libraries in C# and a simple GUI to manipulate multi-page documents suc
 1. Rename all files in a directory to their modifeid datestamp.
 
 ## Supported Formats ##
-===================
 1. **Tiff** - <br />
     Using the ImageMagik library as a Command Line Interface. <br />
     Many thanks to _http://www.imagemagick.org_
