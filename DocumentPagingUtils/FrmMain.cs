@@ -25,13 +25,24 @@ namespace DocumentPagingGui
                 from assembly in AppDomain.CurrentDomain.GetAssemblies()
                 select assembly.Location;
 
-            var assemblies =
-                (
-                    from path_temp in paths_assemblies
-                    let path = Path.GetFullPath(path_temp)
-                    where !paths_assemblies_loaded.Contains(path)
-                    select Assembly.LoadFile(path)
-                ).ToArray();
+            var assemblies = new List<Assembly>();
+            foreach (var path_temp in paths_assemblies)
+            {
+                var path = Path.GetFullPath(path_temp);
+                if (!paths_assemblies_loaded.Contains(path))
+                {
+                    try
+                    {
+                        assemblies.Add(Assembly.LoadFile(path));                    
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(
+                            string.Format("Skipping assembly (Its OK): {0}\n\nException:\n{1}", path, e.ToString())
+                        );
+                    }
+                }
+            }
 
             return GetImplementations(interfaceType, assemblies);
             //return GetImplementations(interfaceType, AppDomain.CurrentDomain.GetAssemblies());
@@ -351,7 +362,16 @@ namespace DocumentPagingGui
             ); 
             
             foreach (var implementation in GetImplementations(typeof(DocumentUtilsBase), "Plugins"))
-                cmbDocType.Items.Add(Activator.CreateInstance(implementation));
+                try
+                {
+                    cmbDocType.Items.Add(Activator.CreateInstance(implementation));
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(
+                        string.Format("Skipping Plugin (Its OK): {0}\n\nException:\n{1}", implementation.ToString(), exception.ToString())
+                    );
+                }
 
             if(cmbDocType.Items.Count > 0)
                 cmbDocType.SelectedIndex = 0;
