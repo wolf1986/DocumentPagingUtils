@@ -168,7 +168,8 @@ namespace Common.DocumentPagingUtils
 
             File.Copy(list_path_odd[0], pathFileTo);
 
-            var index_cur_odd = 1;
+            // First page already copied, start from second
+            var index_cur_odd = 1; 
             var index_cur_even = 0;
 
             while (index_cur_odd < num_of_odd || index_cur_even < num_of_even)

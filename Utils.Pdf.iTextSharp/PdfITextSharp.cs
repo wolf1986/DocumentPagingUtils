@@ -146,12 +146,12 @@ namespace Utils.Pdf.iTextSharp
                 var count_pages = reader.NumberOfPages;
                 int current_page;
 
-                for (current_page = 1; current_page <= count_pages; current_page ++)
+                for (current_page = 0; current_page < count_pages; current_page ++)
                 {
                     var path_file_to = 
                         Path.Combine(
                             folder,
-                            string.Format("{0}{1:D3}{2}", PrefixPage, current_page - 1, DefaultExtension)
+                            string.Format("{0}{1:D3}{2}", PrefixPage, current_page, DefaultExtension)
                         );
 
                     using (var stream = new FileStream(path_file_to, FileMode.Create))
@@ -160,7 +160,7 @@ namespace Utils.Pdf.iTextSharp
                     {
                         doc.Open();
 
-                        var page = pdf.GetImportedPage(reader, current_page);
+                        var page = pdf.GetImportedPage(reader, current_page + 1);
                         pdf.AddPage(page);
 
                         pdf.FreeReader(reader);
